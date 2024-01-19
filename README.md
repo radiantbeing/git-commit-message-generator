@@ -12,3 +12,7 @@
   ```shell
   ollama run mistral
   ```
+
+## Attention
+
+If CORS issues arise, please refer to the following [document](https://github.com/jmorganca/ollama/blob/main/docs/faq.md#how-can-i-allow-additional-web-origins-to-access-ollama).
