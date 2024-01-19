@@ -2,7 +2,7 @@
 
 > The Git Commit Message Generator alleviates the cumbersome task of contemplating commit messages for every commit. Quickly complete your commit messages with ease!
 
-[Demo](https://commit-message-generator.vercel.app/)
+[Demo](https://git-commit-message-generator.vercel.app/)
 
 ## Prerequisites
 
