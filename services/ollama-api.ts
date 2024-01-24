@@ -1,21 +1,33 @@
-const postGenerating = async ({
-  url,
-  model,
-  prompt,
-}: {
+import axios, { AxiosPromise } from "axios";
+
+interface PostGeneratingRequest {
   url: string;
   model: string;
   prompt: string;
-}) => {
-  const res = await fetch(url, {
-    method: "POST",
-    body: JSON.stringify({
-      model,
-      prompt,
-      stream: false,
-    }),
+}
+
+interface PostGeneratingResponse {
+  model: string;
+  created_at: string;
+  response: string;
+  done: boolean;
+  context: number[];
+  total_duration: number;
+  load_duration: number;
+  prompt_eval_duration: number;
+  eval_count: number;
+  eval_duration: number;
+}
+
+const postGenerating = ({
+  url,
+  model,
+  prompt,
+}: PostGeneratingRequest): AxiosPromise<PostGeneratingResponse> =>
+  axios.post(url, {
+    model,
+    prompt,
+    stream: false,
   });
-  return res.json();
-};
 
 export { postGenerating };

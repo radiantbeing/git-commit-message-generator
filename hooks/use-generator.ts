@@ -1,8 +1,12 @@
+import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useToast } from "~/components/ui/use-toast";
 import { postGenerating } from "~/services/ollama-api";
 import { camelize } from "~/utils/namer";
 
 export default function useGenerator() {
+  const { toast } = useToast();
+
   const [inputs, setInputs] = useState({
     apiUrl: "http://localhost:11434",
     language: "",
@@ -28,16 +32,20 @@ export default function useGenerator() {
 
     try {
       setGenerating(true);
-      const { response } = await postGenerating({
+      const { data } = await postGenerating({
         url: `${inputs.apiUrl}/api/generate`,
         model,
         prompt,
       });
-      setGeneratedResponse(response);
+      setGeneratedResponse(data.response);
     } catch (error) {
-      console.log({ error });
-      setGeneratedResponse("Error occurred!");
-      throw error;
+      if (axios.isAxiosError(error)) {
+        toast({
+          variant: "destructive",
+          title: error.code,
+          description: error.message,
+        });
+      }
     } finally {
       setGenerating(false);
     }

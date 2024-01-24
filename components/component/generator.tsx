@@ -19,7 +19,7 @@ export default function Generator() {
   } = useGenerator();
 
   return (
-    <main
+    <div
       key="1"
       className="flex flex-col items-center justify-center min-h-screen py-2"
     >
@@ -30,6 +30,6 @@ export default function Generator() {
         handleSubmit={handleSubmit}
       />
       <ResultCard generatedResponse={generatedResponse} />
-    </main>
+    </div>
   );
 }
