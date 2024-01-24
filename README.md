@@ -15,4 +15,8 @@
 
 ## Attention
 
-If CORS issues arise, please refer to the following [document](https://github.com/jmorganca/ollama/blob/main/docs/faq.md#how-can-i-allow-additional-web-origins-to-access-ollama).
+If you encounter an `ERR_NETWORK: Network Error` error when generating a Git commit message, consider the following possibilities:
+
+1. **Incorrect URL**: Verify that the URL for the running Ollama server is correct.
+2. **Inactive Ollama daemon**: Ensure that Ollama is running on the server.
+3. **CORS Error**: Check if Ollama has added additional web origins. Refer to this [document](https://github.com/jmorganca/ollama/blob/main/docs/faq.md#how-can-i-allow-additional-web-origins-to-access-ollama) for more information.
